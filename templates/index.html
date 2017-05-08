@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+<body>
+{% block body %}
+<h1>Events</h1>
+<div>
+<a target="_self" href='' onclick="this.href='localhost:5000/create_event" class="btn btn-info" role="button" >Create Event</a>
+</div>
+  <div>
+  	<table class="table table-striped">
+		{% for item in start %}
+		<tr><td>{{ item [1] }}</td>
+		<td> {{ item[3] }} </td>
+		<td> {{ item[2] }} </td></tr>
+		{% endfor %}
+	</table>
+	</div>
+{% endblock %}
+</body>

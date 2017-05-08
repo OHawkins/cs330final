@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+<body>
+{% block body %}
+<h1>Create Events</h1>
+	<div class="dataentry">
+			<form class="form-inline" name="event_form">
+				<div class="form-group">
+					<label for="inputname">Event Name</label>
+					<input type="text" id="inputname" name="Event" value="">
+				</div>
+				<div class="form-group">
+					<label for="inputcategory">Category</label>
+					<input type="text" id="inputcategory" name="Category" value="">
+				</div>
+				<div class="form-group">
+					<label for="inputdate">Date</label>
+					<input type="date" id="inputdate" name="Date" value="">
+				</div>
+				<div class="form-group">
+					<label for="inputstarttime">Start Time</label>
+					<input type="text" id="inputstarttime" name="StartTime" value="">
+				</div>
+				<div class="form-group">
+					<label for="inputendtime">End Time</label>
+					<input type="text" id="inputendtime" name="EndTime" value="">
+				</div>
+			</form>
+		</div>
+	<div>
+	<a target="_self" href='' onclick="this.href='localhost:5000/location" class="btn btn-info" role="button" >Next</a>
+{% endblock %}
+</body>
