@@ -28,7 +28,7 @@ class Location(Base):
     __tablename__ = 'location'
 
     id = Column(Integer, primary_key=True)
-    street = Column(String)
+
     city = Column(String)
     state = Column(String)
     country = Column(String)
