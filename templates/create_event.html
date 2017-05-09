@@ -1,10 +1,43 @@
 {% extends "base.html" %}
 <body>
 {% block body %}
-<h1>Create Events</h1>
+<h1 style = "text-align: center;">Create Event</h1>
+
 	<div class="dataentry">
-			<form class="form-inline" name="event_form">
-				<div class="form-group">
+			<form class="form-inline" name="event_form" action = "http://localhost:5000/create_event" method = post>
+			<legend>Create Event</legend>
+            {{ form.hidden_tag() }}
+            
+            <div style = font-size:20px; font-weight:bold; margin-left:150px;>
+               {{ form.name.label }}<br>
+               {{ form.name }}
+               <br>
+               
+               {{ form.category.label }}<br>
+               {{ form.category }}
+               <br>
+               
+               {{ form.date.label }}<br>
+               {{ form.date }}
+               <br>
+               
+               {{ form.start.label }}<br>
+               {{ form.start }}
+               <br>
+
+               {{ form.end.label }}<br>
+               {{ form.end }}
+               <br>
+
+               {{ form.location.label }}<br>
+               {{ form.location }}
+               <br>
+
+               {{ form.submit }}
+            </div>
+            
+         </fieldset>
+				<!-- <div class="form-group">
 					<label for="inputname">Event Name</label>
 					<input type="text" id="inputname" name="Event" value="">
 				</div>
@@ -23,7 +56,7 @@
 				<div class="form-group">
 					<label for="inputendtime">End Time</label>
 					<input type="text" id="inputendtime" name="EndTime" value="">
-				</div>
+				</div> -->
 			</form>
 		</div>
 	<h1>Location</h1>
