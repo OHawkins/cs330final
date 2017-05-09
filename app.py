@@ -16,11 +16,20 @@ def index():
 
     return render_template('index.html')
 
-@app.route('/create_event', methods=['POST'])
+@app.route('/create_event', methods=['GET', 'POST'])
 def create_event():
+    form = EventForm()
+    if request.method == 'POST':
+        if form.validate() == False:
+            flash('All fields are required.')
+            return render_template('create_event.html', form=form)
+        else:
+            return render_template('index.html', form=form)
+    elif request.method == 'GET':
+        return render_template('create_event.html', form = form)
+
     # allow user to enter information about the event,
     # then take them to the create_location view
-    return render_template('create_event.html', res=res)
 
 @app.route('/create_location', methods=['POST'])
 def create_location():
@@ -28,6 +37,18 @@ def create_location():
     data = conn.cursor()
     res = data.execute("""SELECT * FROM city;""")
     return render_template('create_location.html')
+
+@app.route('/create_category', methods=['POST'])
+def create_category():
+    form = CatForm()
+    if request.method == 'POST':
+        if form.validate() == False:
+            flash('All fields are required.')
+            return render_template('create_category.html', form = form)
+        else:
+            return render_template('index.html', form = form)
+    elif request.method == 'GET':
+        return render_template('create_category.html', form = form)
 
 
 if __name__ == '__main__':
