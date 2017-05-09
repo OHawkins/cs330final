@@ -3,8 +3,21 @@ from json import load
 from sqlalchemy import Table, Column, Integer, String, ForeignKey, DateTime, create_engine
 from sqlalchemy.orm import relationship, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+from flask_wtf import Form
+from wtforms import TextField, DateTimeField
 
 Base = declarative_base()
+
+
+class EventForm(Form):
+    name = TextField("Name of Event")
+    cat = DROPDOWN("Assigned Category")
+    strt = DateTimeField("Start Time")
+    nd = DateTimeField("End Time")
+
+class CatForm(Form):
+    name = TextField("Name of Category")
+
 
 class Event(Base):
     __tablename__ = 'event'
@@ -54,12 +67,11 @@ data.execute("""SELECT * FROM city;""")
 
 res = data.fetchall()
 
-
+# populate the location table
 for i in res:
     new_place = Location(id=i[0], city=i[1], country=i[2])
     db.add(new_place)
-for i in range(10):
-    print(new_place)
+
 db.commit()
 
 # conn = psycopg2.connect(user='hawkol01', host='knuth.luther.edu', port=2345)
