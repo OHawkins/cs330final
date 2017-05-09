@@ -2,9 +2,11 @@ from flask import Flask, request, render_template
 import psycopg2
 import json
 from flask_bootstrap import Bootstrap
+from forms import EventForm
 
 app = Flask(__name__)
 Bootstrap(app)
+app.secret_key = 'development key'
 
 # conn = psycopg2.connect(user='hawkol01', host='knuth.luther.edu')
 # db = conn.cursor()
