@@ -7,6 +7,9 @@ from forms import EventForm
 app = Flask(__name__)
 Bootstrap(app)
 app.secret_key = 'development key'
+eventcount = 0
+conn = psycopg2.connect(user='hawkol01', dbname='world', host='knuth.luther.edu')
+data = conn.cursor()
 
 # conn = psycopg2.connect(user='hawkol01', host='knuth.luther.edu')
 # db = conn.cursor()
@@ -14,9 +17,10 @@ app.secret_key = 'development key'
 
 @app.route('/')
 def index():
+    data.execute("""select * from event""")
     # when the page loads, display the list of events
 
-    return render_template('index.html')
+    return render_template('index.html', start=data.fetchall())
 
 @app.route('/create_event', methods=['GET', 'POST'])
 def create_event():
