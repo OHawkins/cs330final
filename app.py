@@ -20,9 +20,6 @@ def index():
 def create_event():
     # allow user to enter information about the event,
     # then take them to the create_location view
-    conn = psycopg2.connect(user='hawkol01', dbname='world', host='knuth.luther.edu')
-    data = conn.cursor()
-    res = data.execute("""SELECT * FROM city;""")
     return render_template('create_event.html', res=res)
 
 @app.route('/create_location', methods=['POST'])
