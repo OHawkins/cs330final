@@ -72,6 +72,22 @@ for i in res:
     new_place = Location(id=i[0], city=i[1], country=i[2])
     db.add(new_place)
 
+data.execute("""SELECT count(*) from event;""")
+num = data.fetchall()
+
+def crevnt(name, category, start, end, location):
+    new_event = Event(num, name, category, start, end, location)
+    db.add(new_event)
+    db.commit()
+
+data.execute("""SELECT count(*) FROM category;""")
+catnum = data.fetchall()
+
+def crt_ctgry(name):
+    new_category = Category(catnum, name)
+    db.add(new_category)
+    db.commit()
+
 db.commit()
 
 # conn = psycopg2.connect(user='hawkol01', host='knuth.luther.edu', port=2345)
