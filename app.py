@@ -13,19 +13,20 @@ Bootstrap(app)
 @app.route('/')
 def index():
     # when the page loads, display the list of events
+    
     return render_template('create_event.html')
 
-@app.route('/create_event', methods=['POST'])
-def create_event():
-    # allow user to enter information about the event,
-    # then take them to the create_location view
-    return render_template('create')
-    pass
-
-@app.route('/create_location', methods=['POST'])
-def create_location():
-    # allow user to enter information about the location
-    return render_template('location.html')
+# @app.route('/create_event', methods=['POST'])
+# def create_event():
+#     # allow user to enter information about the event,
+#     # then take them to the create_location view
+#     return render_template('create')
+#     pass
+#
+# @app.route('/create_location', methods=['POST'])
+# def create_location():
+#     # allow user to enter information about the location
+#     return render_template('location.html')
 
 
 if __name__ == '__main__':

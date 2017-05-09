@@ -1,6 +1,6 @@
 import psycopg2
 from json import load
-from sqlalchemy import Table, Column, Integer, String, ForeignKey, DateTime create_engine
+from sqlalchemy import Table, Column, Integer, String, ForeignKey, DateTime, create_engine
 from sqlalchemy.orm import relationship, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -15,14 +15,9 @@ class Event(Base):
     end = Column(DateTime)
     category = Column(String)
 
-    location = relationship("Location",
-                            secondary=event_city,
-                            back_populates="containing")
-
-
-
     def __repr__(self):
         return "<Event({}, {}-{})>".format(self.name, self.start, self.end)
+
 
 class Location(Base):
     __tablename__ = 'location'
@@ -34,12 +29,13 @@ class Location(Base):
     country = Column(String)
     zip = Column(Integer)
 
-    containing = relationship()
 
     def __repr__(self):
         return "<Location({} {}, {} {}, {})>".format(self.street, self.city, self.state, self.zip, self.country)
 
+
 class Category(Base):
+    __tablename__ = 'category'
     id = Column(Integer, primary_key=True)
     name = Column(String)
 
@@ -51,10 +47,10 @@ class Category(Base):
 engine = create_engine('postgresql://hawkol01@localhost/finalcalorm')
 session = sessionmaker(bind=engine)
 
-db = Session()
+db = session()
 
-Base.metatdata.drop_all(engine)
-Base.metatdata.create_all(engine)
+Base.metadata.drop_all(engine)
+Base.metadata.create_all(engine)
 
 
 db.commit()
