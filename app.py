@@ -2,25 +2,18 @@ from flask import Flask, request, render_template
 import psycopg2
 import json
 from flask_bootstrap import Bootstrap
-from forms import EventForm
+import create_orm
 
 app = Flask(__name__)
 Bootstrap(app)
 app.secret_key = 'development key'
 eventcount = 0
-conn = psycopg2.connect(user='hawkol01', dbname='world', host='knuth.luther.edu')
-data = conn.cursor()
-
-# conn = psycopg2.connect(user='hawkol01', host='knuth.luther.edu')
-# db = conn.cursor()
-
 
 @app.route('/')
 def index():
-    data.execute("""select * from event""")
     # when the page loads, display the list of events
 
-    return render_template('index.html', start=data.fetchall())
+    return render_template('index.html')
 
 @app.route('/create_event', methods=['GET', 'POST'])
 def create_event():
@@ -28,8 +21,9 @@ def create_event():
     if request.method == 'POST':
         if form.validate() == False:
             flash('All fields are required.')
-            return render_template('create_event.html', form=form)
+            return render_template('create_event.html', form = form)
         else:
+            create_orm.crevnt(form.name, form.category, form.start, form.end, form.location)
             return render_template('index.html', form=form)
     elif request.method == 'GET':
         return render_template('create_event.html', form = form)
@@ -39,8 +33,6 @@ def create_event():
 
 @app.route('/create_location', methods=['POST'])
 def create_location():
-    conn = psycopg2.connect(user='hawkol01', dbname='world', host='knuth.luther.edu')
-    data = conn.cursor()
     res = data.execute("""SELECT * FROM city;""")
     return render_template('create_location.html', res = res)
 
@@ -52,6 +44,7 @@ def create_category():
             flash('All fields are required.')
             return render_template('create_category.html', form = form)
         else:
+            create_orm.crt_ctgry(form.name)
             return render_template('index.html', form = form)
     elif request.method == 'GET':
         return render_template('create_category.html', form = form)
