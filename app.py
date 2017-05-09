@@ -36,7 +36,7 @@ def create_location():
     conn = psycopg2.connect(user='hawkol01', dbname='world', host='knuth.luther.edu')
     data = conn.cursor()
     res = data.execute("""SELECT * FROM city;""")
-    return render_template('create_location.html')
+    return render_template('create_location.html', res = res)
 
 @app.route('/create_category', methods=['POST'])
 def create_category():
