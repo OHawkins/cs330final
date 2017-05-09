@@ -4,9 +4,11 @@
 <h1>Events</h1>
 <div>
 <a target="_self" href='' onclick="this.href='localhost:5000/create_event" class="btn btn-info" role="button" >Create Event</a>
+<a target="_self" href='' onclick="this.href='localhost:5000/create_category" class="btn btn-info" role="button" >Create Category</a>
 </div>
   <div>
   	<table class="table table-striped">
+  		<tr><th>Name</th><th>Date</th><th>Start</th><th>End</th></tr>
 		{% for item in start %}
 		<tr><td>{{ item [1] }}</td>
 		<td> {{ item[3] }} </td>
