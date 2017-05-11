@@ -56,15 +56,20 @@ class Category(Base):
     def __repr__(self):
         return "<Category({})>".format(self.name)
 
+print("TABLES CREATED")
 
 # create the engine
-engine = create_engine('postgres://fzoxyvegfbbwwp:dcc7d0363278a31d092ec89d957cac2874f27c0caad1261ffb01092c3c933bb2@ec2-54-235-90-107.compute-1.amazonaws.com:5432/d1veuupffk4555', echo=True)
+engine = create_engine('postgres://fzoxyvegfbbwwp:dcc7d0363278a31d092ec89d957cac2874f27c0caad1261ffb01092c3c933bb2@ec2-54-235-90-107.compute-1.amazonaws.com:5432/d1veuupffk4555')
 Session = sessionmaker(bind=engine)
 
 db = Session()
 
+print("SESSION CREATED")
+
 Base.metadata.drop_all(engine)
+print("DROP ALL")
 Base.metadata.create_all(engine)
+print("CREATE ALL")
 
 
 # connection for knuth cities table
@@ -79,10 +84,12 @@ for i in res:
     new_place = Location(id=i[0], city=i[1], country=i[2])
     db.add(new_place)
 
-#connection to knuth database for insertion
+print("LOCATION POPULATED")
+
+#connection to Heroku database for insertion
 conn2 = psycopg2.connect('postgres://fzoxyvegfbbwwp:dcc7d0363278a31d092ec89d957cac2874f27c0caad1261ffb01092c3c933bb2@ec2-54-235-90-107.compute-1.amazonaws.com:5432/d1veuupffk4555')
 data2 = conn2.cursor()
-
+print("CONNECTED TO HEROKU")
 # populate the event table
 data2.execute("""SELECT count(*) FROM event;""")
 num = data2.fetchall()
@@ -91,11 +98,13 @@ def crevnt(name, category, start, end, location):
     new_event = Event(num, name, category, start, end, location)
     db.add(new_event)
     db.commit()
+print("EVENTS COUNTED")
 
 # grab events from database for index()
 data2.execute("""SELECT * FROM event;""")
 events = data2.fetchall()
 def show_events():
+    print("RETURNING EVENTS")
     return events
 
 # populate the category table
@@ -106,5 +115,8 @@ def crt_ctgry(name):
     new_category = Category(catnum, name)
     db.add(new_category)
     db.commit()
+print("CATEGORIES COUNTED")
 
-db.commit()
+#db.commit()
+
+print("ALL COMMITTED")

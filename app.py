@@ -8,12 +8,15 @@ from forms import EventForm, CatForm
 app = Flask(__name__)
 Bootstrap(app)
 app.secret_key = 'development key'
+print("APP CREATED")
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     # when the page loads, display the list of events
+    print("SHOW EVENTS")
     res = create_orm.show_events()
     return render_template('index.html', res=res)
+print("AFTER INDEX")
 
 @app.route('/create_event', methods=['GET', 'POST'])
 def create_event():
@@ -23,11 +26,12 @@ def create_event():
             flash('All fields are required.')
             return render_template('create_event.html', form = form)
         else:
+            print("ELSE")
             create_orm.crevnt(form.name, form.category, form.start, form.end, form.location)
             return render_template('index.html', form=form)
     elif request.method == 'GET':
         return render_template('create_event.html', form = form)
-
+print("AFTER CREATE_EVENT")
     # allow user to enter information about the event,
     # then take them to the create_location view
 
