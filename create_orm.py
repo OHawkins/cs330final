@@ -43,7 +43,7 @@ class Category(Base):
 
 
 # create the engine
-engine = create_engine('postgresql://hawkol01@knuth.luther.edu/hawkol01', echo=True)
+engine = create_engine('postgres://fzoxyvegfbbwwp:dcc7d0363278a31d092ec89d957cac2874f27c0caad1261ffb01092c3c933bb2@ec2-54-235-90-107.compute-1.amazonaws.com:5432/d1veuupffk4555', echo=True)
 session = sessionmaker(bind=engine)
 
 db = session()
