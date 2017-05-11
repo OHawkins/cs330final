@@ -51,12 +51,12 @@ def create_category():
     if request.method == 'POST':
         if form.validate() == False:
             flash('All fields are required.')
-            return render_template('create_category.html', form = form)
+            return render_template('category.html', form = form)
         else:
             create_orm.crt_ctgry(form.name)
             return render_template('index.html', form = form)
     elif request.method == 'GET':
-        return render_template('create_category.html', form = form)
+        return render_template('category.html', form = form)
 
 
 if __name__ == '__main__':
