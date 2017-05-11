@@ -58,15 +58,17 @@ class Category(Base):
 
 print("TABLES CREATED")
 
+
+# create the engine
+engine = create_engine('postgres://fzoxyvegfbbwwp:dcc7d0363278a31d092ec89d957cac2874f27c0caad1261ffb01092c3c933bb2@ec2-54-235-90-107.compute-1.amazonaws.com:5432/d1veuupffk4555', echo = True)
+Session = sessionmaker(bind=engine)
+
+db = Session()
+
+print("SESSION CREATED")
+
 def db_create():
 
-    # create the engine
-    engine = create_engine('postgres://fzoxyvegfbbwwp:dcc7d0363278a31d092ec89d957cac2874f27c0caad1261ffb01092c3c933bb2@ec2-54-235-90-107.compute-1.amazonaws.com:5432/d1veuupffk4555', echo = True)
-    Session = sessionmaker(bind=engine)
-
-    db = Session()
-
-    print("SESSION CREATED")
 
     Base.metadata.drop_all(engine)
     print("DROP ALL")
