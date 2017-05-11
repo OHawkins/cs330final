@@ -10,3 +10,8 @@ class EventForm(Form):
 	end=TextField("Event End",[validators.Required("Please enter the end time of the event.")])
 	location=TextField("Event Location",[validators.Required("Please enter the location (city) of the event.")])
 	submit = SubmitField("Create Event")
+
+class CatForm(Form):
+	name = TextField("Category Name", [validators.Required("Please enter the title of the category.")])
+	submit = SubmitField("Create Category")
+	
