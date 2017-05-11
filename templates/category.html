@@ -6,7 +6,7 @@
 			<form class="form-inline" name="event_form" action = "http://localhost:5000/create_event" method = post>
 			<legend>Create Category</legend>
             {{ form.hidden_tag() }}
-            
+
             <div style = font-size:20px; font-weight:bold; margin-left:150px;>
                {{ form.name.label }}<br>
                {{ form.name }}
@@ -14,7 +14,7 @@
 
                {{ form.submit }}
             </div>
-            
+
          </fieldset>
 </form>
 {% endblock %}
