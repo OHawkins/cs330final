@@ -3,6 +3,7 @@ import psycopg2
 import json
 from flask_bootstrap import Bootstrap
 import create_orm
+from forms import EventForm, CatForm
 
 app = Flask(__name__)
 Bootstrap(app)
