@@ -58,33 +58,35 @@ class Category(Base):
 
 print("TABLES CREATED")
 
-# create the engine
-engine = create_engine('postgres://fzoxyvegfbbwwp:dcc7d0363278a31d092ec89d957cac2874f27c0caad1261ffb01092c3c933bb2@ec2-54-235-90-107.compute-1.amazonaws.com:5432/d1veuupffk4555')
-Session = sessionmaker(bind=engine)
+def db_create():
 
-db = Session()
+    # create the engine
+    engine = create_engine('postgres://fzoxyvegfbbwwp:dcc7d0363278a31d092ec89d957cac2874f27c0caad1261ffb01092c3c933bb2@ec2-54-235-90-107.compute-1.amazonaws.com:5432/d1veuupffk4555', echo = True)
+    Session = sessionmaker(bind=engine)
 
-print("SESSION CREATED")
+    db = Session()
 
-Base.metadata.drop_all(engine)
-print("DROP ALL")
-Base.metadata.create_all(engine)
-print("CREATE ALL")
+    print("SESSION CREATED")
+
+    Base.metadata.drop_all(engine)
+    print("DROP ALL")
+    Base.metadata.create_all(engine)
+    print("CREATE ALL")
 
 
-# connection for knuth cities table
-conn = psycopg2.connect(user='hawkol01', dbname='world', host='knuth.luther.edu')
-data = conn.cursor()
+    # connection for knuth cities table
+    conn = psycopg2.connect(user='hawkol01', dbname='world', host='knuth.luther.edu')
+    data = conn.cursor()
 
-# populate the location table
-data.execute("""SELECT * FROM city;""")
-res = data.fetchall()
+    # populate the location table
+    data.execute("""SELECT * FROM city;""")
+    res = data.fetchall()
 
-for i in res:
-    new_place = Location(id=i[0], city=i[1], country=i[2])
-    db.add(new_place)
+    for i in res:
+        new_place = Location(id=i[0], city=i[1], country=i[2])
+        db.add(new_place)
 
-print("LOCATION POPULATED")
+    print("LOCATION POPULATED")
 
 #connection to Heroku database for insertion
 conn2 = psycopg2.connect('postgres://fzoxyvegfbbwwp:dcc7d0363278a31d092ec89d957cac2874f27c0caad1261ffb01092c3c933bb2@ec2-54-235-90-107.compute-1.amazonaws.com:5432/d1veuupffk4555')
@@ -117,6 +119,6 @@ def crt_ctgry(name):
     db.commit()
 print("CATEGORIES COUNTED")
 
-#db.commit()
+db.commit()
 
 print("ALL COMMITTED")

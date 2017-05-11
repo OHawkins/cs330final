@@ -10,6 +10,11 @@ Bootstrap(app)
 app.secret_key = 'development key'
 print("APP CREATED")
 
+@app.route('/admin/database')
+def admin():
+    create_orm.db_create()
+    print("AFTER ADMIN")
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     # when the page loads, display the list of events
@@ -55,4 +60,5 @@ def create_category():
 
 
 if __name__ == '__main__':
+    print("NAME == MAIN")
     app.run(debug=True, port=5000)
