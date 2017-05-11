@@ -69,7 +69,6 @@ print("SESSION CREATED")
 
 def db_create():
 
-
     Base.metadata.drop_all(engine)
     print("DROP ALL")
     Base.metadata.create_all(engine)
