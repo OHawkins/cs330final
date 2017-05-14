@@ -128,3 +128,6 @@ def getCat():
     data2.execute("""SELECT name FROM category;""")
     return data2.fetchall()
 
+def getLoc():
+    data2.execute("""SELECT name, country_code FROM city;""")
+    return data2.fetchall()

@@ -40,10 +40,10 @@ print("AFTER CREATE_EVENT")
     # allow user to enter information about the event,
     # then take them to the create_location view
 
-@app.route('/create_location', methods=['GET', 'POST'])
-def create_location():
-    res = data.execute("""SELECT * FROM city;""")
-    return render_template('create_location.html', res = res)
+# @app.route('/create_location', methods=['GET', 'POST'])
+# def create_location():
+#     res = data.execute("""SELECT * FROM city;""")
+#     return render_template('create_location.html', res = res)
 
 @app.route('/create_category', methods=['GET','POST'])
 def create_category():
