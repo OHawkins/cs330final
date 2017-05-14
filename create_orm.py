@@ -69,23 +69,23 @@ print("SESSION CREATED")
 
 def db_create():
 
-    Base.metadata.drop_all(engine)
-    print("DROP ALL")
-    Base.metadata.create_all(engine)
-    print("CREATE ALL")
+    # Base.metadata.drop_all(engine)
+    # print("DROP ALL")
+    # Base.metadata.create_all(engine)
+    # print("CREATE ALL")
 
 
-    # connection for knuth cities table
-    conn = psycopg2.connect(user='hawkol01', dbname='world', host='knuth.luther.edu')
-    data = conn.cursor()
+    # # connection for knuth cities table
+    # conn = psycopg2.connect(user='hawkol01', dbname='world', host='knuth.luther.edu')
+    # data = conn.cursor()
 
-    # populate the location table
-    data.execute("""SELECT * FROM city;""")
-    res = data.fetchall()
+    # # populate the location table
+    # data.execute("""SELECT * FROM city;""")
+    # res = data.fetchall()
 
-    for i in res:
-        new_place = Location(id=i[0], city=i[1], country=i[2])
-        db.add(new_place)
+    # for i in res:
+    #     new_place = Location(id=i[0], city=i[1], country=i[2])
+    #     db.add(new_place)
 
     print("LOCATION POPULATED")
 
