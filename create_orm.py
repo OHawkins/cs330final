@@ -3,9 +3,9 @@ from json import load
 from sqlalchemy import Table, Column, Integer, String, ForeignKey, DateTime, create_engine
 from sqlalchemy.orm import relationship, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from flask_wtf import Form
-from wtforms import TextField, DateTimeField
-from forms import EventForm
+# from flask_wtf import Form
+# from wtforms import TextField, DateTimeField
+# from forms import EventForm
 
 Base = declarative_base()
 
