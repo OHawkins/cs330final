@@ -97,6 +97,7 @@ print("CONNECTED TO HEROKU")
 data2.execute("""SELECT count(*) FROM event;""")
 num = data2.fetchall()
 
+# function called from app.py to create a new event
 def crevnt(name, category, start, end, location):
     new_event = Event(num, name, category, start, end, location)
     db.add(new_event)
@@ -114,6 +115,7 @@ def show_events():
 data2.execute("""SELECT count(*) FROM category;""")
 catnum = data2.fetchall()
 
+# function called from app.py to create a new category
 def crt_ctgry(name):
     new_category = Category(catnum, name)
     db.add(new_category)
@@ -124,10 +126,12 @@ db.commit()
 
 print("ALL COMMITTED")
 
+# returns the list of categories
 def getCat():
     data2.execute("""SELECT name FROM category;""")
     return data2.fetchall()
 
+# returns the list of cities and country codes
 def getLoc():
     data2.execute("""SELECT name, country_code FROM city;""")
     return data2.fetchall()
