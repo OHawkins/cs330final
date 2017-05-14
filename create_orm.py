@@ -120,7 +120,8 @@ def crt_ctgry(name):
     data2.execute("""SELECT count(*) FROM category;""")
     catnum = data2.fetchall()
     print(catnum)
-    new_category = Category(catnum, name)
+    catid = catnum[0][0]
+    new_category = Category(catid, name)
     db.add(new_category)
     db.commit()
 print("CATEGORIES COUNTED")
