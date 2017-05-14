@@ -132,9 +132,10 @@ def getCat():
     stuff=data2.fetchall()
     l = []
     for i in stuff:
-        l.append(i[0])
+        t = (i[0],i[0])
+        l.append(t)
 
-    return tuple(l)
+    return l
 
 # returns the list of cities and country codes
 def getLoc():
