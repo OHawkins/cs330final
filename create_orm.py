@@ -119,8 +119,10 @@ def show_events():
 def crt_ctgry(name):
     data2.execute("""SELECT count(*) FROM category;""")
     catnum = data2.fetchall()
-    print(catnum)
     catid = catnum[0][0]
+    print("CAAAATID =")
+    print(catid)
+    print(name)
     new_category = Category(catid, name)
     db.add(new_category)
     db.commit()
