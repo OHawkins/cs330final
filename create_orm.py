@@ -112,12 +112,14 @@ def show_events():
     return events
 
 # populate the category table
-data2.execute("""SELECT count(*) FROM category;""")
-catnum = data2.fetchall()
+# data2.execute("""SELECT count(*) FROM category;""")
+# catnum = data2.fetchall()
+catnum = 0
 
 # function called from app.py to create a new category
 def crt_ctgry(name):
     new_category = Category(catnum, name)
+    catnum += 1
     db.add(new_category)
     db.commit()
 print("CATEGORIES COUNTED")
