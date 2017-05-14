@@ -47,12 +47,12 @@ print("AFTER CREATE_EVENT")
 
 @app.route('/create_category', methods=['GET','POST'])
 def create_category():
-    form = CatForm()
+    form = CatForm(request.form)
     if request.method == 'POST':
         if form.validate() == False:
             return render_template('category.html', form = form)
         else:
-            create_orm.crt_ctgry(form.name)
+            create_orm.crt_ctgry(request.form["name"])
             return render_template('index.html', form = form, res = create_orm.show_events())
     elif request.method == 'GET':
         return render_template('category.html', form = form)

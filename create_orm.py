@@ -124,7 +124,6 @@ def crt_ctgry(name):
     print(catid)
     print(name)
     print(type(name))
-    print(name.value)
     new_category = Category(catid, name)
     db.add(new_category)
     db.commit()
