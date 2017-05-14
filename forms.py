@@ -1,10 +1,11 @@
 from flask_wtf import Form
 from wtforms import SubmitField, TextField, IntegerField, TextAreaField, DateField, RadioField, SelectField
 from wtforms import validators
+import create_orm
 
 class EventForm(Form):
 	name=TextField("Event Name",[validators.Required("Please enter the name of the event.")])
-	category=TextField("Event Category",[validators.Required("Please enter the category of the event.")])
+	category=SelectField("Event Category", choices=[create_orm.getCat()], [validators.Required("Please enter the category of the event.")])
 	date=DateField("Event Date",[validators.Required("Please enter the date of the event.")])
 	start=TextField("Event Start",[validators.Required("Please enter the start time of the event.")])
 	end=TextField("Event End",[validators.Required("Please enter the end time of the event.")])
@@ -12,6 +13,6 @@ class EventForm(Form):
 	submit = SubmitField("Create Event")
 
 class CatForm(Form):
-	name = TextField("Category Name", [validators.Required("Please enter the title of the category.")])
+	name = TextField("Category Name", [validators.Required("Please enter the name of the category.")])
 	submit = SubmitField("Create Category")
 	

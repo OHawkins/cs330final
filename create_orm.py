@@ -123,3 +123,8 @@ print("CATEGORIES COUNTED")
 db.commit()
 
 print("ALL COMMITTED")
+
+def getCat():
+    data2.execute("""SELECT name FROM category;""")
+    return data2.fetchall()
+
