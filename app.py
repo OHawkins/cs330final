@@ -50,7 +50,6 @@ def create_category():
     form = CatForm()
     if request.method == 'POST':
         if form.validate() == False:
-            flash('All fields are required.')
             return render_template('category.html', form = form)
         else:
             create_orm.crt_ctgry(form.name)
