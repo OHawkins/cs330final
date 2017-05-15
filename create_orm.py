@@ -167,7 +167,7 @@ def getCat():
 # returns the list of cities and country codes
 def getLoc():
     l = []
-    c = 0
+    count = 0
     data2.execute("""SELECT city, country FROM location""")
     stuff=data2.fetchall()
     for i in stuff:
