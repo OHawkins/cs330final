@@ -9,7 +9,8 @@ class EventForm(Form):
 	#date=DateField("Event Date",[validators.Required("Please enter the date of the event.")])
 	start=TextField("Event Start",[validators.Required("Please enter the start time of the event.")])
 	end=TextField("Event End",[validators.Required("Please enter the end time of the event.")])
-	location=SelectField("Event Location", choices=create_orm.getLoc())
+	location=TextField("Event Location", [validators.Required("Please enter the location.")])
+	#location=SelectField("Event Location", choices=create_orm.getLoc())
 	submit = SubmitField("Create Event")
 
 class CatForm(Form):
