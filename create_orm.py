@@ -135,7 +135,7 @@ print("ALL COMMITTED")
 
 # returns the list of categories
 def getCat():
-    data2.execute("""SELECT name FROM category;""")
+    data2.execute("""SELECT DISTINCT name FROM category;""")
     stuff=data2.fetchall()
     l = []
     for i in stuff:
