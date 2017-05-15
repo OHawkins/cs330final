@@ -59,6 +59,8 @@ class Category(Base):
 print("TABLES CREATED")
 
 
+
+
 # create the engine
 engine = create_engine('postgres://fzoxyvegfbbwwp:dcc7d0363278a31d092ec89d957cac2874f27c0caad1261ffb01092c3c933bb2@ec2-54-235-90-107.compute-1.amazonaws.com:5432/d1veuupffk4555', echo = True)
 Session = sessionmaker(bind=engine)
@@ -93,6 +95,10 @@ def db_create():
 conn2 = psycopg2.connect('postgres://fzoxyvegfbbwwp:dcc7d0363278a31d092ec89d957cac2874f27c0caad1261ffb01092c3c933bb2@ec2-54-235-90-107.compute-1.amazonaws.com:5432/d1veuupffk4555')
 data2 = conn2.cursor()
 print("CONNECTED TO HEROKU")
+
+def clearTable():
+    data2.execute("""DELETE FROM event;""")
+clearTable()
 # populate the event table
 # data2.execute("""SELECT count(*) FROM event;""")
 # num = data2.fetchall()
