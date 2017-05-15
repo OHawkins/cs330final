@@ -172,7 +172,7 @@ def getLoc():
     stuff=data2.fetchall()
     for i in stuff:
         astr = i[0] + "," + i[1]
-        t = (count,astr)
+        t = (astr,astr)
         count += 1
         l.append(t)
     return l
