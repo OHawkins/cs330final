@@ -33,7 +33,8 @@ def create_event():
         else:
             print("ELSE")
             create_orm.crevnt(request.form["name"], request.form["category"], request.form["start"], request.form["end"], request.form["location"])
-            return render_template('index.html', form=form, res = create_orm.show_events())
+            res = create_orm.show_events()
+            return render_template('index.html', res=res)
     elif request.method == 'GET':
         return render_template('create_event.html', form = form)
 print("AFTER CREATE_EVENT")
