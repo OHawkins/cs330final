@@ -25,4 +25,3 @@ class EventForm(Form):
 class CatForm(Form):
 	name = TextField("Category Name", [validators.Required("Please enter the name of the category.")])
 	submit = SubmitField("Create Category")
-	
