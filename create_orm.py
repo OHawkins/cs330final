@@ -71,11 +71,11 @@ print("SESSION CREATED")
 
 def db_create():
 
-    # Base.metadata.drop_all(engine)
-    # print("DROP ALL")
-    # Base.metadata.create_all(engine)
-    # print("CREATE ALL")
-
+    Base.metadata.drop_all(engine)
+    print("DROP ALL")
+    Base.metadata.create_all(engine)
+    print("CREATE ALL")
+    db.commit()
 
     # # connection for knuth cities table
     # conn = psycopg2.connect(user='hawkol01', dbname='world', host='knuth.luther.edu')
