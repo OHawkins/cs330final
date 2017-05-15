@@ -7,7 +7,7 @@ class EventForm(Form):
 	name=TextField("Event Name",[validators.Required("Please enter the name of the event.")])
 	category=SelectField("Event Category", choices=create_orm.getCat())
 	#date=DateField("Event Date",[validators.Required("Please enter the date of the event.")])
-	start=TextField("Event Start",[validators.Required("Please enter the start time of the event.")])
+	start=TextField("Event Start",[validators.Required("Please enter the start time of the event.")], default="yyyy-mm-dd hh:mm:ss")
 	end=TextField("Event End",[validators.Required("Please enter the end time of the event.")])
 	location=TextField("Event Location", [validators.Required("Please enter the location.")])
 	#location=SelectField("Event Location", choices=create_orm.getLoc())
