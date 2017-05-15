@@ -99,7 +99,10 @@ num = data2.fetchall()
 
 # function called from app.py to create a new event
 def crevnt(name, category, start, end, location):
-    new_event = Event(num, name, category, start, end, location)
+    data2.execute("""SELECT count(*) FROM event;""")
+    num = data2.fetchall()
+    eid = num[0][0]
+    new_event = Event(eid, name, category, start, end, location)
     db.add(new_event)
     db.commit()
 print("EVENTS COUNTED")

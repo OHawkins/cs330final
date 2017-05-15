@@ -25,14 +25,14 @@ print("AFTER INDEX")
 
 @app.route('/create_event', methods=['GET', 'POST'])
 def create_event():
-    form = EventForm()
+    form = EventForm(request.form)
     if request.method == 'POST':
         if form.validate() == False:
             flash('All fields are required.')
             return render_template('create_event.html', form = form)
         else:
             print("ELSE")
-            create_orm.crevnt(form.name, form.category, form.start, form.end, form.location)
+            create_orm.crevnt(request.form["name"], request.form["category"], request.form["start"], request.form["end"], request.form["location"])
             return render_template('index.html', form=form, res = create_orm.show_events())
     elif request.method == 'GET':
         return render_template('create_event.html', form = form)
