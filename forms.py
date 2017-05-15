@@ -15,10 +15,10 @@ class EventForm(Form):
 	#location=SelectField("Event Location", choices=create_orm.getLoc())
 	submit = SubmitField("Create Event")
 
-	def __init__(self):
-		super(EventForm, self).__init__()
-		cats = create_orm.getCat()
-		self.category.choices = cats
+	# def __init__(self):
+	# 	super(EventForm, self).__init__()
+	# 	cats = create_orm.getCat()
+	# 	self.category.choices = cats
 
 
 
