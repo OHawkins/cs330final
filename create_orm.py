@@ -141,10 +141,19 @@ def getCat():
     for i in stuff:
         t = (i[0],i[0])
         l.append(t)
+    print(l)
 
     return l
 
 # returns the list of cities and country codes
 def getLoc():
-    data2.execute("""SELECT name, country_code FROM city;""")
-    return data2.fetchall()
+    l = []
+    c=0
+    data2.execute("""SELECT name, country_code FROM location;""")
+    stuff=data2.fetchall()
+    for i in stuff:
+        astr = i[0] + "," + i[1]
+        t = (count,astr)
+        count += 1
+        l.append(t)
+    return l
