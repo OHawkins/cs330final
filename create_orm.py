@@ -99,6 +99,7 @@ print("CONNECTED TO HEROKU")
 def clearTable():
     data2.execute("""DELETE FROM event;""")
 clearTable()
+print("PREVIOUS TABLE CLEARED")
 # populate the event table
 # data2.execute("""SELECT count(*) FROM event;""")
 # num = data2.fetchall()
