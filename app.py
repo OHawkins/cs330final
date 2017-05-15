@@ -17,7 +17,7 @@ def admin():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    create_orm.db_create()
+    #create_orm.db_create()
     #create_orm.clearTable()
     # when the page loads, display the list of events
     print("SHOW EVENTS")
