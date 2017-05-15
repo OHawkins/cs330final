@@ -25,7 +25,8 @@ print("AFTER INDEX")
 
 @app.route('/create_event', methods=['GET', 'POST'])
 def create_event():
-    form = EventForm(request.form)
+    cats = create_orm.getCat()
+    form = EventForm(request.form, cats)
     if request.method == 'POST':
         if form.validate() == False:
             flash('All fields are required.')
