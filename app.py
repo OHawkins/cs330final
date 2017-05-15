@@ -10,19 +10,23 @@ Bootstrap(app)
 app.secret_key = 'development key'
 print("APP CREATED")
 
+
 @app.route('/admin/database')
 def admin():
     create_orm.db_create()
     print("AFTER ADMIN")
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    create_orm.clearTable()
+    #create_orm.db_create()
+    #create_orm.clearTable()
     # when the page loads, display the list of events
     print("SHOW EVENTS")
     res = create_orm.show_events()
     return render_template('index.html', res=res)
 print("AFTER INDEX")
+
 
 @app.route('/create_event', methods=['GET', 'POST'])
 def create_event():
@@ -43,10 +47,6 @@ print("AFTER CREATE_EVENT")
     # allow user to enter information about the event,
     # then take them to the create_location view
 
-# @app.route('/create_location', methods=['GET', 'POST'])
-# def create_location():
-#     res = data.execute("""SELECT * FROM city;""")
-#     return render_template('create_location.html', res = res)
 
 @app.route('/create_category', methods=['GET','POST'])
 def create_category():

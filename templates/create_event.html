@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 <body>
 {% block body %}
-<h1 style = "text-align: center;">Create Event</h1>
+<h1 style = "text-align: center; font-variant: small-caps;">CREATE AN EVENT</h1>
 
 	<div class="dataentry">
 			<form class="form-inline" name="event_form" action = "https://tranquil-chamber-88017.herokuapp.com/create_event" method = post>
-			<legend>Create Event</legend>
+			<legend style = "text-align: center;">Add your information to see it on the main page</legend>
             {{ form.hidden_tag() }}
 
             <div style = font-size:20px; font-weight:bold; margin-left:150px;>

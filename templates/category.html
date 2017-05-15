@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 <body>
 {% block body %}
-<h1>Create a category to fit your events!</h1>
+<h1 style = "text-align: center; font-variant: small-caps;">CREATE CATEGORY</h1>
 	<div class="dataentry">
 			<form class="form-inline" name="event_form" action = "https://tranquil-chamber-88017.herokuapp.com/create_category" method = post>
-			<legend>Create Category</legend>
+			<legend style = "text-align: center;">Use categories to group your events</legend>
             {{ form.hidden_tag() }}
 
             <div style = font-size:20px; font-weight:bold; margin-left:150px;>
-               {{ form.name.label }}<br>
+               {{ form.name.label }}
+			   <br>
                {{ form.name }}
                <br>
 
@@ -17,5 +18,5 @@
 
          </fieldset>
 </form>
-<h2>Please, for the luvva dirt, work.</h2>
+
 {% endblock %}
