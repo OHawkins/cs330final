@@ -98,6 +98,8 @@ print("CONNECTED TO HEROKU")
 
 def clearTable():
     data2.execute("""DELETE FROM event;""")
+    data2.execute("""DELETE FROM category;""")
+    db.commit()
 clearTable()
 print("PREVIOUS TABLE CLEARED")
 # populate the event table
