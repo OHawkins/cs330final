@@ -108,9 +108,11 @@ def crevnt(name, category, start, end, location):
 print("EVENTS COUNTED")
 
 # grab events from database for index()
-data2.execute("""SELECT * FROM event;""")
-events = data2.fetchall()
+# data2.execute("""SELECT * FROM event;""")
+# events = data2.fetchall()
 def show_events():
+    data2.execute("""SELECT * FROM event;""")
+    events = data2.fetchall()
     print("RETURNING EVENTS")
     return events
 
