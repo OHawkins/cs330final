@@ -149,7 +149,7 @@ def getCat():
 def getLoc():
     l = []
     c=0
-    data2.execute("""SELECT name, country FROM location;""")
+    data2.execute("""SELECT name, country_code FROM city""")
     stuff=data2.fetchall()
     for i in stuff:
         astr = i[0] + "," + i[1]
