@@ -96,11 +96,11 @@ conn2 = psycopg2.connect('postgres://fzoxyvegfbbwwp:dcc7d0363278a31d092ec89d957c
 data2 = conn2.cursor()
 print("CONNECTED TO HEROKU")
 
-def clearTable():
-    data2.execute("""DELETE FROM event;""")
+#def clearTable():
+    #data2.execute("""DELETE FROM event;""")
     #data2.execute("""DELETE FROM category;""")
-    db.commit()
-clearTable()
+    #db.commit()
+#clearTable()
 print("PREVIOUS TABLE CLEARED")
 # populate the event table
 # data2.execute("""SELECT count(*) FROM event;""")
