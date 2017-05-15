@@ -8,7 +8,7 @@ from sqlalchemy.ext.declarative import declarative_base
 # from forms import EventForm
 
 Base = declarative_base()
-
+#g
 # definitions of SQLAlchemy database classes
 class Event(Base):
     __tablename__ = 'event'
