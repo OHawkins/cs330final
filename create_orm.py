@@ -130,6 +130,7 @@ def crt_ctgry(name):
     new_category = Category(catid, name)
     db.add(new_category)
     db.commit()
+    #Session.rollback()
 print("CATEGORIES COUNTED")
 
 db.commit()
