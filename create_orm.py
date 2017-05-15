@@ -15,8 +15,8 @@ class Event(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     category = Column(String)
-    start = Column(String)
-    end = Column(String)
+    start = Column(DateTime)
+    end = Column(DateTime)
     location = Column(String)
 
     def __init__(self, id, name, category, start, end, location):
