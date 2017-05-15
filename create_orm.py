@@ -154,7 +154,7 @@ print("ALL COMMITTED")
 
 # returns the list of categories
 def getCat():
-    data2.execute("""SELECT DISTINCT name FROM category;""")
+    data2.execute("""SELECT DISTINCT name FROM category ORDER BY name;""")
     stuff=data2.fetchall()
     l = []
     for i in stuff:
@@ -168,7 +168,7 @@ def getCat():
 def getLoc():
     l = []
     count = 0
-    data2.execute("""SELECT city, country FROM location""")
+    data2.execute("""SELECT city, country FROM location ORDER BY country;""")
     stuff=data2.fetchall()
     for i in stuff:
         astr = i[0] + "," + i[1]
