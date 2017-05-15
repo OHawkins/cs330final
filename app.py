@@ -25,7 +25,8 @@ print("AFTER INDEX")
 
 @app.route('/create_event', methods=['GET', 'POST'])
 def create_event():
-    form = EventForm(request.form)
+    cats = create_orm.getCat()
+    form = EventForm(request.form, cats)
     if request.method == 'POST':
         if form.validate() == False:
             flash('All fields are required.')
@@ -48,7 +49,7 @@ print("AFTER CREATE_EVENT")
 
 @app.route('/create_category', methods=['GET','POST'])
 def create_category():
-    form = CatForm(request.form, create_orm.getCat())
+    form = CatForm(request.form)
     if request.method == 'POST':
         if form.validate() == False:
             return render_template('category.html', form = form)
