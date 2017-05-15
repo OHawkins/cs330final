@@ -94,8 +94,8 @@ conn2 = psycopg2.connect('postgres://fzoxyvegfbbwwp:dcc7d0363278a31d092ec89d957c
 data2 = conn2.cursor()
 print("CONNECTED TO HEROKU")
 # populate the event table
-data2.execute("""SELECT count(*) FROM event;""")
-num = data2.fetchall()
+# data2.execute("""SELECT count(*) FROM event;""")
+# num = data2.fetchall()
 
 # function called from app.py to create a new event
 def crevnt(name, category, start, end, location):
