@@ -5,9 +5,9 @@ import create_orm
 
 class EventForm(Form):
 	name=TextField("Event Name",[validators.Required("Please enter the name of the event.")])
-	category=SelectField("Event Category")
+	#category=SelectField("Event Category")
 
-	#category=SelectField("Event Category", choices=create_orm.getCat())
+	category=SelectField("Event Category", choices=create_orm.getCat())
 	#date=DateField("Event Date",[validators.Required("Please enter the date of the event.")])
 	start=TextField("Event Start",[validators.Required("Please enter the start time of the event.")], default="yyyy-mm-dd hh:mm:ss")
 	end=TextField("Event End",[validators.Required("Please enter the end time of the event.")], default="yyyy-mm-dd hh:mm:ss")
@@ -15,9 +15,7 @@ class EventForm(Form):
 	#location=SelectField("Event Location", choices=create_orm.getLoc())
 	submit = SubmitField("Create Event")
 
-	def __init__(self, catChoices):
-		super(EventForm, self).__init__()
-		self.category.choices = catChoices
+
 
 class CatForm(Form):
 	name = TextField("Category Name", [validators.Required("Please enter the name of the category.")])
